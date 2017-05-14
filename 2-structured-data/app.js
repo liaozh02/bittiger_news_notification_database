@@ -24,13 +24,17 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.set('trust proxy', true);
 
-// Books
-app.use('/books', require('./books/crud'));
-app.use('/api/books', require('./books/api'));
+// Books Fort test
+//app.use('/books', require('./books/crud'));
+//app.use('/api/books', require('./books/api'));
+// Groups
+app.use('/groups', require('./groups/crud'));
+app.use('/api/groups', require('./groups/api'));
 
 // Redirect root to /books
 app.get('/', (req, res) => {
-  res.redirect('/books');
+//  res.redirect('/books');
+    res.redirect('/groups');
 });
 
 // Basic 404 handler

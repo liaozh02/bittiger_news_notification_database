@@ -21,7 +21,7 @@ const options = {
   host: '35.184.66.219',
   user: config.get('MYSQL_USER'),
   password: config.get('MYSQL_PASSWORD'),
-  database: 'bookshelf'
+  database: 'grouplist'
 };
 
 if (config.get('INSTANCE_CONNECTION_NAME') && config.get('NODE_ENV') === 'production') {
@@ -34,7 +34,7 @@ const connection = mysql.createConnection(options);
 function list (limit, token, cb) {
   token = token ? parseInt(token, 10) : 0;
   connection.query(
-    'SELECT * FROM `books` LIMIT ? OFFSET ?', [limit, token],
+    'SELECT * FROM `groups` LIMIT ? OFFSET ?', [limit, token],
     (err, results) => {
       if (err) {
         cb(err);
@@ -49,7 +49,7 @@ function list (limit, token, cb) {
 
 // [START create]
 function create (data, cb) {
-  connection.query('INSERT INTO `books` SET ?', data, (err, res) => {
+  connection.query('INSERT INTO `groups` SET ?', data, (err, res) => {
     if (err) {
       cb(err);
       return;
@@ -61,7 +61,7 @@ function create (data, cb) {
 
 function read (id, cb) {
   connection.query(
-    'SELECT * FROM `books` WHERE `id` = ?', id, (err, results) => {
+    'SELECT * FROM `groups` WHERE `id` = ?', id, (err, results) => {
       if (err) {
         cb(err);
         return;
@@ -80,7 +80,7 @@ function read (id, cb) {
 // [START update]
 function update (id, data, cb) {
   connection.query(
-    'UPDATE `books` SET ? WHERE `id` = ?', [data, id], (err) => {
+    'UPDATE `groups` SET ? WHERE `id` = ?', [data, id], (err) => {
       if (err) {
         cb(err);
         return;
@@ -91,7 +91,7 @@ function update (id, data, cb) {
 // [END update]
 
 function _delete (id, cb) {
-  connection.query('DELETE FROM `books` WHERE `id` = ?', id, cb);
+  connection.query('DELETE FROM `groups` WHERE `id` = ?', id, cb);
 }
 
 module.exports = {
@@ -127,19 +127,15 @@ function createSchema (config) {
   }, config));
 
   connection.query(
-    `CREATE DATABASE IF NOT EXISTS \`bookshelf\`
+    `CREATE DATABASE IF NOT EXISTS \`grouplist\`
       DEFAULT CHARACTER SET = 'utf8'
       DEFAULT COLLATE 'utf8_general_ci';
-    USE \`bookshelf\`;
-    CREATE TABLE IF NOT EXISTS \`bookshelf\`.\`books\` (
+    USE \`grouplist\`;
+    CREATE TABLE IF NOT EXISTS \`grouplist\`.\`groups\` (
       \`id\` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-      \`title\` VARCHAR(255) NULL,
-      \`author\` VARCHAR(255) NULL,
-      \`publishedDate\` VARCHAR(255) NULL,
-      \`imageUrl\` VARCHAR(255) NULL,
+      \`name\` VARCHAR(255) NULL,
       \`description\` TEXT NULL,
-      \`createdBy\` VARCHAR(255) NULL,
-      \`createdById\` VARCHAR(255) NULL,
+      \`version\` INT(255) NOT NULL,      
     PRIMARY KEY (\`id\`));`,
     (err) => {
       if (err) {
