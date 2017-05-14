@@ -11,24 +11,24 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 
-extends ../base.jade
+extends ../base-members.jade
 
 block content
-  h3 Books
+  h3 Members
 
-  a(href="/books/add", class='btn btn-success btn-sm')
+  a(href="/members/add", class='btn btn-success btn-sm')
     i.glyphicon.glyphicon-plus
-    span  Add book
+    span  Add member
 
-  each book in books
+  each member in members
     .media
-      a(href="/books/#{book.id}")
+      a(href="/members/#{member.id}")
         .media-body
-          h4= book.title
-          p= book.author
+          p= member.groupId
+          p= member.userEmail
 
-  if !books.length
-    p No books found.
+  if !members.length
+    p No members found.
 
   if nextPageToken
     nav

@@ -10,7 +10,8 @@
     "cover": "nyc --cache npm test; nyc report --reporter=html",
     "init-group-cloudsql": "node groups/model-cloudsql.js",
     "init-user-cloudsql": "node users/model-cloudsql.js",
-    "init-admin-cloudsql": "node admins/model-cloudsql.js"
+    "init-admin-cloudsql": "node admins/model-cloudsql.js",
+    "init-member-cloudsql": "node members/model-cloudsql.js"
   },
   "author": "Google Inc.",
   "contributors": [

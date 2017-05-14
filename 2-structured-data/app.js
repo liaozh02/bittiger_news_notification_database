@@ -37,11 +37,14 @@ app.use('/users', require('./users/crud'));
 // Admins
 app.use('/admins', require('./admins/crud'));
 
+// Admins
+app.use('/members', require('./members/crud'));
+
 // Redirect root to /books
 app.get('/', (req, res) => {
 //  res.redirect('/books');
  //   res.redirect('/groups');
- res.redirect('/admins');
+ res.redirect('/members');
 });
 
 // Basic 404 handler

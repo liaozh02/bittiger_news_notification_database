@@ -11,24 +11,21 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 
-extends ../base.jade
+extends ../base-members.jade
 
 block content
-  h3 Book
+  h3 Member
     small
 
   .btn-group
-    a(href="/books/#{book.id}/edit", class='btn btn-primary btn-sm')
+    a(href="/members/#{member.id}/edit", class='btn btn-primary btn-sm')
       i.glyphicon.glyphicon-edit
-      span  Edit book
-    a(href="/books/#{book.id}/delete", class='btn btn-danger btn-sm')
+      span  Edit member
+    a(href="/members/#{member.id}/delete", class='btn btn-danger btn-sm')
       i.glyphicon.glyphicon-trash
-      span  Delete book
+      span  Delete member
 
   .media
     .media-body
-      h4= book.title
-        | &nbsp;
-        small= book.publishedDate
-      h5 By #{book.author||'unknown'}
-      p= book.description
+      p= member.groupId
+      p= member.userEmail
