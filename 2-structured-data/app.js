@@ -31,10 +31,17 @@ app.set('trust proxy', true);
 app.use('/groups', require('./groups/crud'));
 app.use('/api/groups', require('./groups/api'));
 
+// USers
+app.use('/users', require('./users/crud'));
+
+// Admins
+app.use('/admins', require('./admins/crud'));
+
 // Redirect root to /books
 app.get('/', (req, res) => {
 //  res.redirect('/books');
-    res.redirect('/groups');
+ //   res.redirect('/groups');
+ res.redirect('/admins');
 });
 
 // Basic 404 handler

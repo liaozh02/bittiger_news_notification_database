@@ -11,22 +11,21 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 
-doctype html
-html(lang="en")
-  head
-    title BitTiger - Node.js on Google Cloud Platform
-    meta(charset='utf-8')
-    meta(name="viewport", content="width=device-width, initial-scale=1")
-    link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css")
-  body
-    .navbar.navbar-default
-      .container
-        .navbar-header
-          .navbar-brand BitTiger
+extends ../base-users.jade
 
-        ul.nav.navbar-nav
-          li
-            a(href="/groups") Groups
+block content
+  h3 User
+    small
 
-    .container
-      block content
+  .btn-group
+    a(href="/users/#{user.email}/edit", class='btn btn-primary btn-sm')
+      i.glyphicon.glyphicon-edit
+      span  Edit user
+    a(href="/users/#{user.email}/delete", class='btn btn-danger btn-sm')
+      i.glyphicon.glyphicon-trash
+      span  Delete user
+
+  .media
+    .media-body
+      p= user.email
+      p= user.password

@@ -8,7 +8,9 @@
     "start": "node app.js",
     "test": "ava -t 30s --tap test/*.test.js | tap-dot",
     "cover": "nyc --cache npm test; nyc report --reporter=html",
-    "init-cloudsql": "node groups/model-cloudsql.js"
+    "init-group-cloudsql": "node groups/model-cloudsql.js",
+    "init-user-cloudsql": "node users/model-cloudsql.js",
+    "init-admin-cloudsql": "node admins/model-cloudsql.js"
   },
   "author": "Google Inc.",
   "contributors": [

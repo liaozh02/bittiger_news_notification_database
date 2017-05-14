@@ -11,22 +11,19 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 
-doctype html
-html(lang="en")
-  head
-    title BitTiger - Node.js on Google Cloud Platform
-    meta(charset='utf-8')
-    meta(name="viewport", content="width=device-width, initial-scale=1")
-    link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css")
-  body
-    .navbar.navbar-default
-      .container
-        .navbar-header
-          .navbar-brand BitTiger
+// [START form]
+extends ../base-users.jade
 
-        ul.nav.navbar-nav
-          li
-            a(href="/groups") Groups
+block content
+  h3 #{action} user
+  form(method="POST")
+    .form-group
+      label(for="email") Email
+      input.form-control(type="text", name="email", id="email", value=user.email)
+    .form-group
+      label(for="password") Password
+      input.form-control(type="text", name="password", id="password", value=user.password)
+    .form-group
+    button.btn.btn-success(type="submit") Save
 
-    .container
-      block content
+// [END form]
