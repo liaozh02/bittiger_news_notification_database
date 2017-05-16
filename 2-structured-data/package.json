@@ -11,7 +11,9 @@
     "init-group-cloudsql": "node groups/model-cloudsql.js",
     "init-user-cloudsql": "node users/model-cloudsql.js",
     "init-admin-cloudsql": "node admins/model-cloudsql.js",
-    "init-member-cloudsql": "node members/model-cloudsql.js"
+    "init-member-cloudsql": "node members/model-cloudsql.js",
+    "init-msg-cloudsql": "node msgs/model-cloudsql.js",
+    "init-msgres-cloudsql": "node msg-records/model-cloudsql.js"
   },
   "author": "Google Inc.",
   "contributors": [

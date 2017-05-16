@@ -40,11 +40,14 @@ app.use('/admins', require('./admins/crud'));
 // Admins
 app.use('/members', require('./members/crud'));
 
-// Redirect root to /books
+// Msgs
+app.use('/msgs', require('./msgs/crud'));
+
+// Redirect root to ./msgs
 app.get('/', (req, res) => {
 //  res.redirect('/books');
  //   res.redirect('/groups');
- res.redirect('/members');
+ res.redirect('/msgs');
 });
 
 // Basic 404 handler
